@@ -12,6 +12,8 @@ public class CombatController : MonoBehaviour
     }
     private void Update()
     {
+        gameObject.GetComponent<UIManager>().SetCombatStatus(true);
+        // Los turnos se alternan entre el jugador y el enemigo hasta que el enemigo es derrotado.
         if (turn)
         {
             if (Input.GetMouseButtonDown(0))
@@ -36,6 +38,13 @@ public class CombatController : MonoBehaviour
                 enemyPrefab.GetComponent<EnemyBehavior>().enemyChar.Heal();
             }
             turn = true;
+        }
+        // Comprobar si el enemigo ha sido derrotado
+        if (enemyPrefab.GetComponent<EnemyBehavior>().enemyChar.health <= 0)
+        {
+            Destroy(enemyPrefab);
+            Debug.Log("Enemigo derrotado.");
+            gameObject.GetComponent<UIManager>().SetCombatStatus(false);
         }
     }
 }

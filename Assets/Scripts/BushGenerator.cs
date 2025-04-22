@@ -10,6 +10,7 @@ public class BushGenerator : MonoBehaviour
     private void Start()
     {
         GenerateMap(bushMap);
+        RenderMap(bushMap);
     }
     private void GenerateMap(char[,] bushMap)
     {

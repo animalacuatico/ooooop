@@ -22,7 +22,7 @@ public abstract class Character
 
     public virtual float Heal() // No obliga a los hijos a usar el método, y también pueden modificarlo y complementarlo con override.
     {
-        if (health > 101)
+        if (health > 100)
         {
             health = 100;
         }

@@ -18,13 +18,14 @@ public class PlayerBehavior : MonoBehaviour
         switch (typesOfPlayer)
         {
             case PlayerType.WIZARD:
-                playerChar = new Wizard(1, "wizardo");
+                playerChar = new Wizard(1, "Wizardo");
                 break;
             case PlayerType.COWBOY:
-                playerChar = new Cowboy("cowboyardo");
+                playerChar = new Cowboy("Cowboyardo");
                 break;
         }
         spriteRenderer.sprite = playerChar.GetSprite();
+        Debug.Log(playerChar.GetName());
     }
     void Update()
     {
