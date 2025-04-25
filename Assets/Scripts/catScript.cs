@@ -19,9 +19,15 @@ public class catScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            randomDirVector = new Vector2(Random.Range(-2, 2), Random.Range(-2, 2));
+            randomDirVector = new Vector2(Random.Range(-2, 2), Random.Range(-2, 2));       //peak cinema
             RB2D.AddForce(randomDirVector * 10, ForceMode2D.Impulse);
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            transform.position = new Vector2(0, 0);
+            RB2D.velocity = Vector2.zero;
+        }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

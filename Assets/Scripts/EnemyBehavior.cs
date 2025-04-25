@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public enum EnemyType { GOBLIN, SUKAMON }
-
 public class EnemyBehavior : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public Character enemyChar;
     public EnemyType typesOfEnemy;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
