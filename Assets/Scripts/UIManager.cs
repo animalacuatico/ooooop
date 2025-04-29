@@ -7,14 +7,16 @@ public class UIManager : MonoBehaviour
 {
     public InterfaceVariable varToUpdate;
     private TMP_Text textComp;
-    private bool inCombat = false;
+    private bool UICombat;
     private void Start()
     {
         textComp = GetComponent<TMP_Text>();
+        UICombat = false;
     }
     private void Update()
     {
-        if (inCombat)
+        UICombat = GameManager.instance.GetCombatStatus();
+        if (UICombat)
         {
             switch (varToUpdate)
             {
@@ -42,9 +44,5 @@ public class UIManager : MonoBehaviour
         {
             textComp.text = "";
         }
-    }
-    public void SetCombatStatus(bool status)
-    {
-        inCombat = status;
     }
 }

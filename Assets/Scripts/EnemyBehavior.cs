@@ -6,19 +6,19 @@ public class EnemyBehavior : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public Character enemyChar;
-    public EnemyType typesOfEnemy;
+    private EnemyType typesOfEnemy;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        switch (typesOfEnemy)
+        int chance = Random.Range(0, 2);
+        if (chance == 0)
         {
-            case EnemyType.GOBLIN:
-                enemyChar = new Goblin();
-                break;
-            case EnemyType.SUKAMON:
-                enemyChar = new Sukamon();
-                break;
+            enemyChar = new Goblin();
+        }
+        else if (chance == 1)
+        {
+            enemyChar = new Sukamon();
         }
         spriteRenderer.sprite = enemyChar.GetSprite();
     }

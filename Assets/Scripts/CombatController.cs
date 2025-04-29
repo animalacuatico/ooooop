@@ -8,14 +8,16 @@ public class CombatController : MonoBehaviour
     private bool turn = true; // Si turn es verdadero, le toca al jugador. Si es falso, le toca al enemigo.
     private void Start()
     {
-        playerPrefab = GetComponent<GameObject>();
+        playerPrefab = FindObjectOfType<PlayerBehavior>().gameObject;
+        enemyPrefab = FindObjectOfType<EnemyBehavior>().gameObject;
     }
     private void Update()
     {
-        gameObject.GetComponent<UIManager>().SetCombatStatus(true);
+        GameManager.instance.SetCombatStatus(true);
         // Los turnos se alternan entre el jugador y el enemigo hasta que el enemigo es derrotado.
         if (turn)
         {
+            Debug.Log("COMBATE EMPEZADO. Turno del jugador.");
             if (Input.GetMouseButtonDown(0))
             {
                 playerPrefab.GetComponent<PlayerBehavior>().playerChar.Attack();
@@ -28,6 +30,7 @@ public class CombatController : MonoBehaviour
         }
         else
         {
+            Debug.Log("Turno del enemigo.");
             int enemyAction = Random.Range(0, 1);
             if (enemyAction == 0)
             {
@@ -44,7 +47,8 @@ public class CombatController : MonoBehaviour
         {
             Destroy(enemyPrefab);
             Debug.Log("Enemigo derrotado.");
-            gameObject.GetComponent<UIManager>().SetCombatStatus(false);
+            GameManager.instance.SetCombatStatus(false);
+            Destroy(this); // Destruir el controlador de combate después de la victoria
         }
     }
 }

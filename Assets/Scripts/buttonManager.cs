@@ -16,8 +16,7 @@ public class buttonManager : MonoBehaviour
     }
     public string InputName()
     {
-        // Método para recoger el nombre del jugador que ha puesto en el inputField
-        return "Placeholder"; // Cambiar por el nombre del jugador que ha puesto en el inputField
+        return "Placeholder";
     }
     public void CharChosen()
     {

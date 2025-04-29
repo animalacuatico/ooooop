@@ -11,10 +11,10 @@ public class combatBush : MonoBehaviour
         {
             int randomChance = Random.Range(0, 10);
             Debug.Log("No se ha invocado un combate.");
-            if (randomChance < 1)
+            if (randomChance < 2)
             {
                 Debug.Log("Se ha invocado un combate.");
-                gameObject.GetComponent<PlayerBehavior>().AddComponent<CombatController>();
+                gameObject.AddComponent<CombatController>();
             }
         }
     }

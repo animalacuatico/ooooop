@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum InterfaceVariable { PLAYER_NAME, PLAYER_HEALTH, COMBAT_STATUS_PLAYER, COMBAT_STATUS_ENEMY, ENEMY_NAME, ENEMY_HEALTH }
+public enum PlayerType { COWBOY, WIZARD }
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private PlayerType playerType;
+    private Character Character;
+    private string playerName = "SinNombre";
+    private bool inCombat = false;
     private void Awake()
     {
         if (!instance)
@@ -22,19 +27,19 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
-    public void SetPlayerType(int value)
+    public Character SetPlayerType()
     {
-        if (value == 0)
-        {
-            // Hacer que en el playerBehavior, playerChar sea un Wizard
-        }
-        else
-        {
-            // Hacer que en el playerBehavior, playerChar sea un Cowboy
-        }
+        string chosenname = playerName;
+        Character = new Wizard(1, playerName);
+        Character = new Cowboy(playerName);
+        return Character;
     }
-    public void SetPlayerName(string name)
+    public void SetCombatStatus(bool status)
     {
-        // Método para recoger el nombre del jugador que ha puesto en el inputField y asignarlo al playerChar del PlayerBehavior
+        inCombat = status;
+    }
+    public bool GetCombatStatus()
+    {
+        return inCombat;
     }
 }
